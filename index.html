@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Giorgio Sacchi — Statistico, Metodologo, Sociologo · Docente UniGe</title>
+<meta name="description" content="Sito personale di Giorgio Sacchi: statistico, metodologo e sociologo. Professore a contratto presso l'Università degli Studi di Genova dal 1996. Consulente di enti pubblici, industrie e banche." />
+<meta name="author" content="Giorgio Sacchi" />
+<meta name="theme-color" content="#0b1b2b" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet" />
+
+<style>
+/* ---------------------------------------------------------------
+   Giorgio Sacchi — sito personale
+   Stile: moderno-minimale, palette chiara, accenti blu notte
+---------------------------------------------------------------- */
+:root{
+  --bg:#f7f4ec;
+  --bg-warm:#f1e9d9;
+  --bg-cool:#eaf1ef;
+  --bg-elev:#ffffff;
+  --ink:#12243a;
+  --ink-soft:#3b4b5c;
+  --muted:#6b7685;
+  --line:#e2dccc;
+  --line-strong:#cdc3ac;
+
+  /* Palette ampliata con più carattere */
+  --accent:#2a5ea0;        /* blu principale */
+  --accent-soft:#e0eaf6;
+  --accent-2:#c9793b;      /* arancio-ambra */
+  --accent-2-soft:#fbe8d3;
+  --accent-3:#2f7a6d;      /* verde-teal */
+  --accent-3-soft:#d4ebe5;
+  --accent-4:#a8433d;      /* mattone */
+  --accent-4-soft:#f6dfdb;
+  --accent-5:#6b4a8a;      /* viola/indaco */
+  --accent-5-soft:#e8dff1;
+
+  --radius:14px;
+  --radius-lg:22px;
+  --shadow-sm:0 1px 2px rgba(18,36,58,.05),0 2px 8px rgba(18,36,58,.05);
+  --shadow-md:0 10px 30px rgba(18,36,58,.10);
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+img{max-width:100%;display:block}
+
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:0 0 .4em;line-height:1.15}
+h1{font-size:clamp(2.4rem,5.6vw,4.2rem)}
+h2{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+h3{font-size:1.1rem;font-weight:600;font-family:"Inter",sans-serif;letter-spacing:.01em}
+p{margin:0 0 1em;color:var(--ink-soft)}
+
+.container{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,244,236,.85);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s ease}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav .inner{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-weight:700;letter-spacing:-.01em;color:var(--ink);font-size:1.02rem;display:inline-flex;align-items:center;gap:10px}
+.brand::before{content:"";width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2) 50%,var(--accent-4));box-shadow:0 0 0 3px var(--accent-soft)}
+.brand span{background:linear-gradient(90deg,var(--accent),var(--accent-5));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:24px;flex-wrap:wrap}
+.nav a.navlink{color:var(--ink-soft);font-size:.92rem;font-weight:500}
+.nav a.navlink:hover{color:var(--accent);text-decoration:none}
+@media (max-width:900px){.nav ul{display:none}}
+
+/* HERO */
+.hero{padding:clamp(64px,12vw,140px) 0 clamp(56px,9vw,110px);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(42,94,160,.18), transparent 42%),
+    radial-gradient(circle at 88% 22%, rgba(201,121,59,.16), transparent 45%),
+    radial-gradient(circle at 70% 90%, rgba(47,122,109,.14), transparent 48%),
+    radial-gradient(circle at 25% 95%, rgba(107,74,138,.10), transparent 40%);
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:6px;z-index:2;
+  background:linear-gradient(90deg,var(--accent) 0%, var(--accent-3) 33%, var(--accent-2) 66%, var(--accent-4) 100%);
+}
+.hero .container{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.4fr .8fr;gap:60px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero .tag{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--accent-soft),var(--accent-3-soft));color:var(--accent);padding:8px 16px;border-radius:999px;font-size:.82rem;font-weight:600;letter-spacing:.02em;margin-bottom:22px;border:1px solid rgba(42,94,160,.14)}
+.hero .tag .dot{width:8px;height:8px;background:var(--accent-3);border-radius:50%;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.7}}
+.hero h1{max-width:14ch}
+.hero .role{font-family:"Fraunces",serif;font-size:1.4rem;margin:4px 0 14px;font-style:italic;font-weight:500;background:linear-gradient(90deg,var(--accent),var(--accent-2) 55%, var(--accent-4));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+.hero .lede{max-width:58ch;font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--ink-soft)}
+.hero .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 20px;border-radius:999px;font-weight:600;font-size:.94rem;transition:all .18s ease;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{background:var(--accent);text-decoration:none;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink);text-decoration:none}
+.btn svg{width:16px;height:16px}
+.portrait{aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-md);background:linear-gradient(135deg,#dfe6ef 0%,#b8c6d8 100%)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* SECTIONS */
+section{padding:clamp(60px,9vw,110px) 0;border-top:1px solid var(--line);position:relative}
+/* alternanza cromatica soft */
+section#formazione{background:var(--bg-warm)}
+section#esperienza{background:linear-gradient(180deg, var(--bg), #eee5d1 100%)}
+section#pubblicazioni{background:var(--bg-cool)}
+section#conferenze{background:linear-gradient(180deg, var(--bg-cool), #dfece4)}
+section#collaborazioni{background:var(--bg-warm)}
+
+.eyebrow{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:12px;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:2px;background:currentColor;border-radius:2px;display:inline-block}
+section#formazione .eyebrow{color:var(--accent-2)}
+section#esperienza .eyebrow{color:var(--accent-4)}
+section#pubblicazioni .eyebrow{color:var(--accent-3)}
+section#conferenze .eyebrow{color:var(--accent-5)}
+section#collaborazioni .eyebrow{color:var(--accent-2)}
+.section-head{max-width:64ch;margin-bottom:48px}
+
+/* GRIDS */
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+/* CARD */
+.card{background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)}
+.card h3{margin-bottom:8px}
+.card p{color:var(--ink-soft);margin:0;font-size:.95rem}
+.card .k{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;margin-bottom:12px;display:inline-block;font-weight:700;padding:4px 10px;border-radius:999px;color:var(--accent);background:var(--accent-soft)}
+#collaborazioni .grid .card:nth-child(1) .k{color:var(--accent);background:var(--accent-soft)}
+#collaborazioni .grid .card:nth-child(2) .k{color:var(--accent-5);background:var(--accent-5-soft)}
+#collaborazioni .grid .card:nth-child(3) .k{color:var(--accent-3);background:var(--accent-3-soft)}
+#collaborazioni .grid .card:nth-child(4) .k{color:var(--accent-2);background:var(--accent-2-soft)}
+#collaborazioni .grid .card:nth-child(5) .k{color:var(--accent-4);background:var(--accent-4-soft)}
+#collaborazioni .grid .card:nth-child(6) .k{color:var(--accent-3);background:var(--accent-3-soft)}
+#formazione .grid .card:nth-child(1) .k{color:var(--accent-2);background:var(--accent-2-soft)}
+#formazione .grid .card:nth-child(2) .k{color:var(--accent-3);background:var(--accent-3-soft)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:60px;align-items:start}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:36px}}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.fact{padding:18px;background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius);transition:all .22s ease;position:relative;overflow:hidden}
+.fact::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.fact:nth-child(1)::after{background:var(--accent)}
+.fact:nth-child(2)::after{background:var(--accent-2)}
+.fact:nth-child(3)::after{background:var(--accent-3)}
+.fact:nth-child(4)::after{background:var(--accent-5)}
+.fact:nth-child(5)::after{background:var(--accent-4)}
+.fact:nth-child(6)::after{background:var(--accent-3)}
+.fact:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.fact .n{font-family:"Fraunces",serif;font-size:2rem;display:block;font-weight:500;background:linear-gradient(135deg,var(--accent),var(--accent-5));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--accent)}
+.fact:nth-child(2) .n{background:linear-gradient(135deg,var(--accent-2),var(--accent-4));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact:nth-child(3) .n{background:linear-gradient(135deg,var(--accent-3),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact:nth-child(4) .n{background:linear-gradient(135deg,var(--accent-5),var(--accent-4));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact:nth-child(5) .n{background:linear-gradient(135deg,var(--accent-4),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact:nth-child(6) .n{background:linear-gradient(135deg,var(--accent-3),var(--accent-5));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact .l{font-size:.85rem;color:var(--muted);font-weight:500}
+
+.side-card{padding:28px;background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius-lg)}
+.side-card h3{margin-top:0}
+.side-card dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0;font-size:.93rem}
+.side-card dt{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;padding-top:3px}
+.side-card dd{margin:0;color:var(--ink)}
+
+/* DEPT */
+.dept{position:relative;padding:24px 24px 24px 28px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--bg-elev);display:flex;flex-direction:column;gap:10px;transition:all .22s ease;overflow:hidden}
+.dept::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
+.dept:nth-of-type(1)::before{background:var(--accent)}
+.dept:nth-of-type(2)::before{background:var(--accent-3)}
+.dept:nth-of-type(3)::before{background:var(--accent-2)}
+.dept:nth-of-type(4)::before{background:var(--accent-4)}
+.dept:hover{border-color:var(--line-strong);transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.dept .code{font-family:"Inter",monospace;font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding:4px 10px;background:var(--accent-soft);border-radius:999px;align-self:flex-start}
+.dept:nth-of-type(2) .code{color:var(--accent-3);background:var(--accent-3-soft)}
+.dept:nth-of-type(3) .code{color:var(--accent-2);background:var(--accent-2-soft)}
+.dept:nth-of-type(4) .code{color:var(--accent-4);background:var(--accent-4-soft)}
+.dept h3{margin:0;font-size:1rem;line-height:1.35}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;border-left:2px solid var(--line-strong)}
+.timeline .item{position:relative;padding:0 0 28px 12px}
+.timeline .item:last-child{padding-bottom:0}
+.timeline .item::before{content:"";position:absolute;left:-21px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg-warm),0 0 0 6px currentColor;color:rgba(0,0,0,.05)}
+.timeline .item:nth-child(1)::before{background:var(--accent-4)}
+.timeline .item:nth-child(2)::before{background:var(--accent-2)}
+.timeline .item:nth-child(3)::before{background:var(--accent-3)}
+.timeline .item:nth-child(4)::before{background:var(--accent-5)}
+.timeline .item:nth-child(5)::before{background:var(--accent)}
+.timeline .item:nth-child(6)::before{background:var(--accent-4)}
+.timeline .item:nth-child(7)::before{background:var(--accent-2)}
+.timeline .date{font-family:"Inter",monospace;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding:3px 9px;background:var(--accent-soft);border-radius:6px;display:inline-block}
+.timeline .item:nth-child(1) .date{color:var(--accent-4);background:var(--accent-4-soft)}
+.timeline .item:nth-child(2) .date{color:var(--accent-2);background:var(--accent-2-soft)}
+.timeline .item:nth-child(3) .date{color:var(--accent-3);background:var(--accent-3-soft)}
+.timeline .item:nth-child(4) .date{color:var(--accent-5);background:var(--accent-5-soft)}
+.timeline .item:nth-child(5) .date{color:var(--accent);background:var(--accent-soft)}
+.timeline .item:nth-child(6) .date{color:var(--accent-4);background:var(--accent-4-soft)}
+.timeline .item:nth-child(7) .date{color:var(--accent-2);background:var(--accent-2-soft)}
+.timeline h4{font-family:"Inter",sans-serif;font-weight:600;font-size:1.02rem;margin:8px 0 6px;color:var(--ink)}
+.timeline p{margin:0;color:var(--ink-soft);font-size:.93rem}
+
+/* TEACHING */
+.year-group{margin-bottom:44px}
+.year-group:last-child{margin-bottom:0}
+.year-label{display:inline-block;font-family:"Fraunces",serif;font-size:1.2rem;color:#fff;padding:8px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-5));border-radius:999px;margin-bottom:22px;font-weight:500;letter-spacing:.01em}
+.year-group:nth-of-type(2) .year-label{background:linear-gradient(135deg,var(--accent-3),var(--accent))}
+.course-list{display:grid;gap:12px}
+.course{position:relative;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:start;padding:20px 24px 20px 28px;background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius);transition:all .2s ease;overflow:hidden}
+.course::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);opacity:.9}
+.course.type-sei::before{background:var(--accent-2)}
+.course:hover{border-color:var(--line-strong);background:#fff;transform:translateX(2px)}
+.course .ctitle{font-weight:600;color:var(--ink);font-size:1rem}
+.course .ctitle a{color:var(--ink)}
+.course .ctitle a:hover{color:var(--accent)}
+.course.type-sei .ctitle a:hover{color:var(--accent-2)}
+.course .cmeta{color:var(--muted);font-size:.86rem;margin-top:4px}
+.course .cprog{color:var(--ink-soft);font-size:.88rem;margin-top:4px;font-style:italic}
+.course .code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.78rem;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:8px;white-space:nowrap;font-weight:600}
+.course.type-sei .code{color:var(--accent-2);background:var(--accent-2-soft)}
+@media (max-width:640px){.course{grid-template-columns:1fr}.course .code{justify-self:start}}
+
+/* PUBS */
+.pub{position:relative;padding:22px 24px 22px 28px;background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:14px;transition:all .2s ease;overflow:hidden}
+.pub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent-3)}
+.pub:nth-of-type(3n-1)::before{background:var(--accent-2)}
+.pub:nth-of-type(3n)::before{background:var(--accent-5)}
+.pub:hover{border-color:var(--line-strong);transform:translateX(2px);box-shadow:var(--shadow-sm)}
+.pub .pyear{font-family:"Inter",monospace;font-size:.76rem;color:var(--accent-3);font-weight:700;letter-spacing:.08em;padding:3px 9px;background:var(--accent-3-soft);border-radius:6px;display:inline-block}
+.pub:nth-of-type(3n-1) .pyear{color:var(--accent-2);background:var(--accent-2-soft)}
+.pub:nth-of-type(3n) .pyear{color:var(--accent-5);background:var(--accent-5-soft)}
+.pub .ptitle{font-weight:600;color:var(--ink);margin:10px 0 4px;font-size:.99rem;line-height:1.4}
+.pub .pmeta{color:var(--muted);font-size:.87rem;font-style:italic}
+
+/* TALK list */
+.talks{display:grid;gap:10px}
+.talk{padding:16px 22px;background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius);font-size:.93rem;color:var(--ink-soft);display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;transition:all .2s ease}
+.talk:hover{border-color:var(--line-strong);transform:translateX(2px)}
+.talk .tbadge{font-family:ui-monospace,monospace;font-size:.72rem;letter-spacing:.04em;padding:6px 11px;border-radius:7px;font-weight:800;color:#fff;background:var(--accent-5);white-space:nowrap}
+.talk:nth-child(5n+1) .tbadge{background:var(--accent-5)}
+.talk:nth-child(5n+2) .tbadge{background:var(--accent-4)}
+.talk:nth-child(5n+3) .tbadge{background:var(--accent)}
+.talk:nth-child(5n+4) .tbadge{background:var(--accent-3)}
+.talk:nth-child(5n+5) .tbadge{background:var(--accent-2)}
+
+/* CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--bg-elev);border:1px solid var(--line);padding:6px 13px;border-radius:999px;font-size:.82rem;color:var(--ink-soft);font-weight:500;transition:all .18s ease;cursor:default}
+.chip:hover{transform:translateY(-1px);border-color:var(--line-strong)}
+.chips.industry .chip{background:var(--accent-4-soft);border-color:transparent;color:var(--accent-4)}
+.chips.services .chip{background:var(--accent-3-soft);border-color:transparent;color:var(--accent-3)}
+.chips.banks .chip{background:var(--accent-5-soft);border-color:transparent;color:var(--accent-5)}
+
+/* RES */
+.res{display:flex;flex-direction:column;gap:12px;padding:28px;border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--bg-elev);height:100%;transition:transform .2s ease,box-shadow .2s ease}
+.res:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.res .icon{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:inline-flex;align-items:center;justify-content:center}
+#risorse .grid .res:nth-child(1) .icon{background:var(--accent-4-soft);color:var(--accent-4)}
+#risorse .grid .res:nth-child(2) .icon{background:var(--accent-3-soft);color:var(--accent-3)}
+#risorse .grid .res:nth-child(3) .icon{background:var(--accent-2-soft);color:var(--accent-2)}
+#risorse .grid .res:nth-child(4) .icon{background:var(--accent-soft);color:var(--accent)}
+#risorse .grid .res:nth-child(5) .icon{background:var(--accent-5-soft);color:var(--accent-5)}
+#risorse .grid .res:nth-child(6) .icon{background:var(--accent-3-soft);color:var(--accent-3)}
+.res h3{margin:0}
+.res p{flex:1}
+.res a.link{color:var(--accent);font-weight:600;font-size:.92rem}
+.res a.link::after{content:" →";transition:margin .18s ease}
+.res a.link:hover::after{margin-left:4px}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;background:linear-gradient(135deg,var(--ink) 0%,#1a3550 50%,#2a4b6e 100%);color:#f0efe9;border-radius:var(--radius-lg);padding:clamp(32px,6vw,60px);position:relative;overflow:hidden}
+.contact-wrap::before{content:"";position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(201,121,59,.28),transparent 70%);pointer-events:none}
+.contact-wrap::after{content:"";position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(47,122,109,.22),transparent 70%);pointer-events:none}
+.contact-wrap > *{position:relative;z-index:1}
+.contact-wrap h2{color:#fff}
+.contact-wrap p{color:#c8cfd9}
+.contact-wrap a{color:#a8c4e0}
+.contact-wrap .info{display:grid;gap:14px;margin-top:20px}
+.info .row{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:14px 0;border-top:1px solid rgba(255,255,255,.09)}
+.info .row:first-child{border-top:none;padding-top:0}
+.info .row .label{color:#8a97a8;font-size:.83rem;text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+@media (max-width:720px){.contact-wrap{grid-template-columns:1fr}.info .row{grid-template-columns:1fr}.info .row .label{margin-bottom:-8px}}
+
+/* FOOTER */
+footer{padding:40px 0 70px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);position:relative}
+footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:3px;background:linear-gradient(90deg,var(--accent) 0%, var(--accent-3) 33%, var(--accent-2) 66%, var(--accent-4) 100%);opacity:.6}
+footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center}
+footer a{color:var(--ink-soft)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="inner">
+    <a href="#top" class="brand">Giorgio <span>Sacchi</span></a>
+    <ul>
+      <li><a class="navlink" href="#chi-sono">Chi sono</a></li>
+      <li><a class="navlink" href="#formazione">Formazione</a></li>
+      <li><a class="navlink" href="#esperienza">Esperienza</a></li>
+      <li><a class="navlink" href="#affiliazioni">UniGe</a></li>
+      <li><a class="navlink" href="#insegnamenti">Insegnamenti</a></li>
+      <li><a class="navlink" href="#pubblicazioni">Pubblicazioni</a></li>
+      <li><a class="navlink" href="#contatti">Contatti</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="tag reveal"><span class="dot"></span> Università degli Studi di Genova · dal 1996</div>
+        <h1 class="reveal">Giorgio Sacchi</h1>
+        <div class="role reveal">Statistico · Metodologo · Sociologo</div>
+        <p class="lede reveal">
+          Professore a contratto all'Università degli Studi di Genova.
+          Trent'anni di docenza universitaria al crocevia tra
+          <strong>informatica</strong>, <strong>statistica</strong> e
+          <strong>scienze della salute</strong>, con una carriera parallela da
+          consulente per industria, sanità, servizi pubblici e sistema bancario.
+        </p>
+        <div class="cta reveal">
+          <a class="btn btn-primary" href="#insegnamenti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Vedi gli insegnamenti
+          </a>
+          <a class="btn btn-ghost" href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_it.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Scarica il CV
+          </a>
+        </div>
+      </div>
+      <div class="portrait reveal">
+        <img src="https://rubrica.unige.it/static/foto/U0tGXlxp.jpg" alt="Giorgio Sacchi" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- CHI SONO -->
+<section id="chi-sono">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Chi sono</div>
+      <h2>Un ponte tra metodi quantitativi, informatica e scienze della salute.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal">
+        <p>
+          La mia formazione è quella di uno statistico e matematico, costruita
+          nell'arco di quattro decenni attraverso un percorso che ha messo
+          insieme la ricerca accademica, la consulenza metodologica per grandi
+          organizzazioni, l'insegnamento universitario e l'applicazione di
+          tecniche quantitative — dalle reti neurali alle analisi statistiche
+          classiche — a problemi reali in ambito sanitario, industriale,
+          bancario e nei servizi pubblici.
+        </p>
+        <p>
+          Dal 1996 insegno all'Università degli Studi di Genova, dove sono
+          Professore a contratto: complessivamente oltre 150 incarichi di
+          docenza su <em>Informatica</em>, <em>Sistemi di Elaborazione delle
+          Informazioni</em>, <em>Statistica</em> e laboratori applicati,
+          distribuiti su quattro dipartimenti dell'area medico-sanitaria.
+        </p>
+        <p>
+          La mia ricerca si è storicamente concentrata sull'intelligenza
+          artificiale, la logica, le reti neurali e la filosofia della scienza.
+          Ho tenuto relazioni invitate a convegni internazionali
+          (IJCAI, Tokyo, Brighton, Stoccolma, Ascona) e ho collaborato con
+          università italiane e straniere — da Urbino a Bologna, da Brighton
+          a La Sapienza di Roma.
+        </p>
+
+        <div class="facts">
+          <div class="fact"><span class="n">30+</span><span class="l">Anni di docenza UniGe</span></div>
+          <div class="fact"><span class="n">150+</span><span class="l">Incarichi di docenza</span></div>
+          <div class="fact"><span class="n">70</span><span class="l">Tesi di laurea seguite</span></div>
+          <div class="fact"><span class="n">4</span><span class="l">Dipartimenti UniGe</span></div>
+          <div class="fact"><span class="n">IJCAI '87</span><span class="l">Invited speaker</span></div>
+          <div class="fact"><span class="n">IT · EN · FR</span><span class="l">Lingue di lavoro</span></div>
+        </div>
+      </div>
+
+      <aside class="side-card reveal">
+        <h3>In breve</h3>
+        <dl>
+          <dt>Ruolo</dt><dd>Professore a contratto</dd>
+          <dt>Ateneo</dt><dd>Università degli Studi di Genova</dd>
+          <dt>Dal</dt><dd>1° settembre 1996</dd>
+          <dt>Ambiti</dt><dd>Informatica, statistica, metodologia, IA</dd>
+          <dt>Email</dt><dd><a href="mailto:giorgio.sacchi@unige.it">giorgio.sacchi@unige.it</a></dd>
+          <dt>Profilo</dt><dd><a href="https://rubrica.unige.it/personale/U0tGXlxp" target="_blank" rel="noopener">Rubrica UniGe ↗</a></dd>
+          <dt>CV</dt><dd>
+            <a href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_it.pdf" target="_blank" rel="noopener">Italiano ↗</a>
+            &nbsp;·&nbsp;
+            <a href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_en.pdf" target="_blank" rel="noopener">English ↗</a>
+          </dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAZIONE -->
+<section id="formazione">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Formazione &amp; Lingue</div>
+      <h2>Matematica a Genova, inglese a Belfast e Cambridge.</h2>
+    </div>
+
+    <div class="grid grid-2 reveal">
+      <div class="card">
+        <span class="k">Istruzione</span>
+        <h3>Laurea in Scienze Matematiche</h3>
+        <p>Università degli Studi di Genova — conseguita il 24 marzo 1982 (ordinamento previgente).</p>
+      </div>
+      <div class="card">
+        <span class="k">Lingue straniere</span>
+        <h3>Inglese (avanzato) · Francese (intermedio)</h3>
+        <p>Inglese certificato all'Università dell'Ulster e alla Cambridge School for Advanced English. Livelli autovalutati secondo il Quadro Comune Europeo: inglese B2/C2/B2/B2/C1, francese B1/C1/B1/B1/B2.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPERIENZA -->
+<section id="esperienza">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Esperienza professionale</div>
+      <h2>Trent'anni tra consulenza, impresa e didattica.</h2>
+      <p>
+        La mia attività si è sviluppata parallelamente all'insegnamento universitario, con incarichi
+        consulenziali per enti pubblici, gruppi industriali e istituti finanziari.
+      </p>
+    </div>
+
+    <div class="grid grid-2 reveal" style="align-items:start">
+      <div>
+        <div class="timeline">
+          <div class="item">
+            <div class="date">1996 — oggi</div>
+            <h4>Docente universitario · Università degli Studi di Genova</h4>
+            <p>Professore a contratto ininterrottamente per 30 anni accademici sui corsi di Informatica, Sistemi di Elaborazione delle Informazioni, Statistica e laboratori applicati.</p>
+          </div>
+          <div class="item">
+            <div class="date">1990 — 2011</div>
+            <h4>Consulente direzionale · Elsag-Bailey (Gruppo Finmeccanica)</h4>
+            <p>Responsabile di progetto per la misura della qualità del servizio postale; consulenze su procedure ISO, logistica, customer satisfaction, call center e analisi statistiche. Formazione per l'alta dirigenza.</p>
+          </div>
+          <div class="item">
+            <div class="date">Imprenditore</div>
+            <h4>Presidente · Cooperativa Thesis Informatica r.l.</h4>
+            <p>Fondazione e guida di una società cooperativa attiva nell'area dell'informatica applicata.</p>
+          </div>
+          <div class="item">
+            <div class="date">2000 — 2001</div>
+            <h4>Consulente · Datamedia, Milano</h4>
+            <p>Consulenza metodologica e statistica; direzione del progetto Internet Monitor.</p>
+          </div>
+          <div class="item">
+            <div class="date">1998 — 2001</div>
+            <h4>Consulente · Pagine Utili, Milano</h4>
+            <p>Studio metodologico e statistico per la misurazione della diffusione di Pagine Italia.</p>
+          </div>
+          <div class="item">
+            <div class="date">1993 — 1994</div>
+            <h4>Comitato scientifico · TVBANK, Milano</h4>
+            <p>Membro del comitato scientifico dell'associazione che riuniva oltre 300 emittenti televisive locali e nazionali.</p>
+          </div>
+          <div class="item">
+            <div class="date">Anni '90</div>
+            <h4>Consulente · Abacus</h4>
+            <p>Modelli previsionali per l'andamento del mercato borsistico e analisi della dinamica delle privatizzazioni.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <h3>Settori di consulenza</h3>
+        <p style="font-size:.92rem">
+          Nel corso della carriera ho collaborato con realtà di ogni dimensione e settore. Ecco una selezione.
+        </p>
+        <div style="margin:14px 0 8px;font-size:.78rem;color:var(--accent-4);text-transform:uppercase;letter-spacing:.12em;font-weight:700">Industria &amp; difesa</div>
+        <div class="chips industry">
+          <span class="chip">Arma dei Carabinieri</span>
+          <span class="chip">Ministero della Difesa</span>
+          <span class="chip">Galileo Avionica</span>
+          <span class="chip">Alenia Spazio</span>
+          <span class="chip">Saipem</span>
+          <span class="chip">Oto Melara</span>
+          <span class="chip">Fincantieri</span>
+          <span class="chip">Ansaldo Energia</span>
+          <span class="chip">Ansaldo Breda</span>
+          <span class="chip">Nuovo Pignone</span>
+          <span class="chip">Agusta</span>
+          <span class="chip">Aermacchi</span>
+          <span class="chip">Techint</span>
+          <span class="chip">Agip</span>
+          <span class="chip">Cartiere Burgo</span>
+          <span class="chip">Bassetti</span>
+          <span class="chip">Zanussi Eldom</span>
+          <span class="chip">Italsider</span>
+          <span class="chip">Italimpianti</span>
+        </div>
+        <div style="margin:18px 0 8px;font-size:.78rem;color:var(--accent-3);text-transform:uppercase;letter-spacing:.12em;font-weight:700">Servizi &amp; PA</div>
+        <div class="chips services">
+          <span class="chip">ISTAT</span>
+          <span class="chip">Aeroporti di Roma</span>
+          <span class="chip">ATM Milano</span>
+          <span class="chip">GTT Torino</span>
+          <span class="chip">A.M.T.</span>
+          <span class="chip">Acea Electrabel</span>
+          <span class="chip">Regione Liguria</span>
+          <span class="chip">Comune di Genova</span>
+          <span class="chip">Comunità Europea</span>
+        </div>
+        <div style="margin:18px 0 8px;font-size:.78rem;color:var(--accent-5);text-transform:uppercase;letter-spacing:.12em;font-weight:700">Banche &amp; finanza</div>
+        <div class="chips banks">
+          <span class="chip">Banca d'Italia</span>
+          <span class="chip">ABI</span>
+          <span class="chip">Gruppo MPS</span>
+          <span class="chip">San Paolo IMI</span>
+          <span class="chip">Société Générale</span>
+          <span class="chip">Banca CARIGE</span>
+          <span class="chip">Cassa di Risparmio di Firenze</span>
+          <span class="chip">Generali INA</span>
+          <span class="chip">Iccrea Banca</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIAZIONI -->
+<section id="affiliazioni">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Affiliazioni UniGe</div>
+      <h2>Quattro dipartimenti dell'area medica e sanitaria.</h2>
+      <p>
+        Il mio incarico di docenza si articola su quattro dipartimenti dell'Università degli Studi di Genova.
+      </p>
+    </div>
+
+    <div class="grid grid-2 reveal">
+      <a class="dept" href="https://rubrica.unige.it/strutture/struttura/100007" target="_blank" rel="noopener">
+        <span class="code">DIMI</span>
+        <h3>Dipartimento di Medicina Interna e Specialità Mediche</h3>
+        <p>Medicina clinica, specialità internistiche e formazione medica.</p>
+      </a>
+      <a class="dept" href="https://rubrica.unige.it/strutture/struttura/100009" target="_blank" rel="noopener">
+        <span class="code">DINOGMI</span>
+        <h3>Dipartimento di Neuroscienze, Riabilitazione, Oftalmologia, Genetica e Scienze Materno-Infantili</h3>
+        <p>Neuroscienze, riabilitazione, scienze oftalmologiche e materno-infantili.</p>
+      </a>
+      <a class="dept" href="https://rubrica.unige.it/strutture/struttura/100010" target="_blank" rel="noopener">
+        <span class="code">DISC</span>
+        <h3>Dipartimento di Scienze Chirurgiche e Diagnostiche Integrate</h3>
+        <p>Chirurgia e discipline diagnostiche integrate.</p>
+      </a>
+      <a class="dept" href="https://rubrica.unige.it/strutture/struttura/100011" target="_blank" rel="noopener">
+        <span class="code">DISSAL</span>
+        <h3>Dipartimento di Scienze della Salute</h3>
+        <p>Sanità pubblica, igiene e scienze della salute.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- INSEGNAMENTI -->
+<section id="insegnamenti">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Insegnamenti</div>
+      <h2>Didattica per l'area medica e sanitaria.</h2>
+      <p>
+        Gli insegnamenti attivi e del recente passato. I link rimandano alla scheda
+        ufficiale del corso sul portale UniGe, con programma, modalità d'esame, materiali e calendario.
+      </p>
+    </div>
+
+    <div class="year-group reveal">
+      <span class="year-label">Anno Accademico 2025 — 2026</span>
+      <div class="course-list">
+        <article class="course">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2025/ins/86235.html" target="_blank" rel="noopener">Informatica</a></div>
+            <div class="cmeta">Fisica, Informatica, Radioprotezione e Statistica</div>
+            <div class="cprog">Corso di Laurea — Tecniche Ortopediche</div>
+          </div>
+          <span class="code">cod. 58082</span>
+        </article>
+        <article class="course">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2025/ins/90954.html" target="_blank" rel="noopener">Informatica</a></div>
+            <div class="cmeta">Scienze Umane</div>
+            <div class="cprog">Laurea Magistrale (ciclo unico) — Medicina e Chirurgia</div>
+          </div>
+          <span class="code">cod. 106494</span>
+        </article>
+        <article class="course">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2025/ins/90809.html" target="_blank" rel="noopener">Informatica</a></div>
+            <div class="cmeta">Fisica, Biologia, Genetica e Statistica</div>
+            <div class="cprog">Corso di Laurea — Infermieristica</div>
+          </div>
+          <span class="code">cod. 118003</span>
+        </article>
+        <article class="course type-sei">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2025/ins/88648.html" target="_blank" rel="noopener">Sistemi di Elaborazione delle Informazioni</a></div>
+            <div class="cmeta">Scienze dell'Igiene Dentale IV</div>
+            <div class="cprog">Corso di Laurea — Igiene Dentale</div>
+          </div>
+          <span class="code">cod. 73089</span>
+        </article>
+        <article class="course type-sei">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2025/ins/84690.html" target="_blank" rel="noopener">Sistemi di Elaborazione delle Informazioni</a></div>
+            <div class="cmeta">Principi di Management Sanitario e Medicina Legale</div>
+            <div class="cprog">Corso di Laurea — Ortottica ed Assistenza Oftalmologica</div>
+          </div>
+          <span class="code">cod. 67686</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="year-group reveal">
+      <span class="year-label">Anno Accademico 2024 — 2025</span>
+      <div class="course-list">
+        <article class="course">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2024/ins/74315.html" target="_blank" rel="noopener">Informatica</a></div>
+            <div class="cmeta">Scienze Comportamentali e Metodologia Scientifica</div>
+            <div class="cprog">Laurea Magistrale (ciclo unico) — Odontoiatria e Protesi Dentaria</div>
+          </div>
+          <span class="code">cod. 58082</span>
+        </article>
+        <article class="course">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2024/ins/78927.html" target="_blank" rel="noopener">Informatica</a></div>
+            <div class="cmeta">Fisica Medica, Biofisica e Informatica</div>
+            <div class="cprog">Laurea Magistrale (ciclo unico) — Medicina e Chirurgia</div>
+          </div>
+          <span class="code">cod. 106494</span>
+        </article>
+        <article class="course type-sei">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2024/ins/80519.html" target="_blank" rel="noopener">Sistemi di Elaborazione delle Informazioni</a></div>
+            <div class="cmeta">Scienze dell'Igiene Dentale IV</div>
+            <div class="cprog">Corso di Laurea — Igiene Dentale</div>
+          </div>
+          <span class="code">cod. 73089</span>
+        </article>
+        <article class="course type-sei">
+          <div>
+            <div class="ctitle"><a href="https://corsi.unige.it/off.f/2024/ins/76018.html" target="_blank" rel="noopener">Sistemi di Elaborazione delle Informazioni</a></div>
+            <div class="cmeta">Principi di Management Sanitario e Medicina Legale</div>
+            <div class="cprog">Corso di Laurea — Ortottica ed Assistenza Oftalmologica</div>
+          </div>
+          <span class="code">cod. 67686</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:30px;padding:22px 26px;background:var(--accent-soft);border-radius:var(--radius);color:var(--ink-soft);font-size:.95rem">
+      <strong>Storico completo:</strong> dal 1996 a oggi, oltre 150 incarichi di docenza
+      documentati nel CV, distribuiti tra Medicina e Chirurgia, Odontoiatria, Infermieristica,
+      Tecniche Ortopediche, Igiene Dentale, Ortottica, Scienze Riabilitative delle Professioni
+      Sanitarie. Per il dettaglio completo consulta il
+      <a href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_it.pdf" target="_blank" rel="noopener">CV in PDF</a>.
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBBLICAZIONI -->
+<section id="pubblicazioni">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Pubblicazioni selezionate</div>
+      <h2>Tra informatica, intelligenza artificiale e medicina.</h2>
+      <p>Una selezione da un percorso di ricerca che intreccia filosofia della scienza, logica, reti neurali e applicazioni cliniche.</p>
+    </div>
+
+    <div class="reveal">
+      <article class="pub">
+        <div class="pyear">1992 · MONOGRAFIA</div>
+        <div class="ptitle">Logica e informatica — Scienze dell'artificiale e scienze dell'uomo</div>
+        <div class="pmeta">G. Sacchi — Quattroventi, Urbino</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">1995 · CAPITOLO</div>
+        <div class="ptitle">Applied neural nets — in «Ricerca qualitativa e computer. Teorie, metodi e applicazioni»</div>
+        <div class="pmeta">FrancoAngeli, Milano</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">2002 · ARTICOLO</div>
+        <div class="ptitle">Microalbuminuria identifies overall cardiovascular risk in essential hypertension: an artificial neural network-based approach</div>
+        <div class="pmeta">Leoncini G., Sacchi G., Viazzi F., Ravera M., Parodi D., Ratto E., Vettoretti S., Tomolillo C., Deferrari G., Pontremoli R. — Journal of Hypertension, Vol. 20, n. 7</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">J. AM. SOC. NEPHROL.</div>
+        <div class="ptitle">Microalbuminuria is an integrated marker of subclinical organ damage in essential hypertension</div>
+        <div class="pmeta">Leoncini G., Sacchi G., Ravera M., Viazzi F., Ratto E., Vettoretti S., Parodi D., Bezante GP., Del Sette M., Deferrari G., Pontremoli R.</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">A.I. &amp; SOCIETY · SPRINGER</div>
+        <div class="ptitle">Social Logic and Expert Systems · Logic, Logics &amp; A.I.</div>
+        <div class="pmeta">G. Sacchi — Springer Verlag</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">EPISTEMOLOGIA</div>
+        <div class="ptitle">Il concetto di specie biologica: una proposta di formalizzazione</div>
+        <div class="pmeta">Sacchi G., Ansaldo D., Morchio R. — Epistemologia, Rivista Italiana di Filosofia delle Scienze, X</div>
+      </article>
+      <article class="pub">
+        <div class="pyear">ATTI DI CONVEGNO</div>
+        <div class="ptitle">PBL on line at the Graduate Program for Health Personnel, Medical School, University of Genoa</div>
+        <div class="pmeta">Siri A., Sacchi G., Scarinci A., Sasso L., Lotti A. — ICERI, Madrid</div>
+      </article>
+      <article class="pub">
+        <div class="ptitle">Problem-Based Learning in a Web-based learning environment: a case study at the University of Genoa</div>
+        <div class="pmeta">Siri A., Sacchi G., Scarinci A., Bagnasco A., Sasso L., Lotti A. — Guide International Workshop, Roma</div>
+      </article>
+      <article class="pub">
+        <div class="ptitle">Il PBL incontra WEB 2.0: un caso di studio all'Università di Genova</div>
+        <div class="pmeta">Siri A., Sacchi G., Scarinci A., Sasso L., Lotti A. — Moodlemoot, VI edizione, Bari</div>
+      </article>
+      <article class="pub">
+        <div class="ptitle">Co-autore di un volume di filosofia della religione</div>
+        <div class="pmeta">Rizzoli</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENZE -->
+<section id="conferenze">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Conferenze &amp; seminari</div>
+      <h2>Relazioni invitate in Italia e all'estero.</h2>
+      <p>Una selezione dei convegni internazionali e nazionali in cui ho tenuto relazioni come relatore o invited speaker.</p>
+    </div>
+
+    <div class="talks reveal">
+      <div class="talk"><span class="tbadge">IJCAI 87</span><span><strong>10<sup>th</sup> International Joint Conference on Artificial Intelligence</strong> — Special Session «Toward a Sociology of A.I.» · Relazione: <em>Accessoriality vs Necessarianism</em></span></div>
+      <div class="talk"><span class="tbadge">TOKYO</span><span><strong>Artificial Intelligence &amp; Society</strong> — Congresso Internazionale · Invited Speaker</span></div>
+      <div class="talk"><span class="tbadge">LUGANO</span><span>Congresso internazionale sull'Intelligenza Artificiale · Relatore</span></div>
+      <div class="talk"><span class="tbadge">BRIGHTON</span><span><strong>Human Centred System Design</strong> — Convegno internazionale · Relatore (in due edizioni)</span></div>
+      <div class="talk"><span class="tbadge">STOCCOLMA</span><span><strong>Culture, Language, and Artificial Intelligence</strong> — Relatore</span></div>
+      <div class="talk"><span class="tbadge">URBINO</span><span>Convegno Internazionale sull'Artificiale · Relatore</span></div>
+      <div class="talk"><span class="tbadge">ASCONA (CH)</span><span>II Convegno Internazionale «La cultura dell'artificiale» · Relazione: <em>Spunti per una definizione del concetto di artificiale</em></span></div>
+      <div class="talk"><span class="tbadge">FORLÌ</span><span>«Il problema della conoscenza e l'intelligenza artificiale» · Relazione: <em>Incertezza, logica ed intelligenza artificiale</em></span></div>
+      <div class="talk"><span class="tbadge">BARI</span><span>Congresso nazionale «Nuove tecnologie e nuove professionalità» · Relazione di apertura</span></div>
+      <div class="talk"><span class="tbadge">SID</span><span><strong>XI Congresso Nazionale della Società Italiana di Diabetologia</strong> · Co-autore del lavoro «Diabetologist-1: un sistema esperto per un supporto informatico alla diagnostica diabetologica» con P. Odetti e G. Cortassa</span></div>
+      <div class="talk"><span class="tbadge">ROMA</span><span>Università «La Sapienza» — Ciclo di lezioni su informatica, IA e gestione informatizzata degli archivi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPARTENENZE & COLLAB -->
+<section id="collaborazioni">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Affiliazioni scientifiche</div>
+      <h2>Reti di ricerca e appartenenze.</h2>
+    </div>
+
+    <div class="grid grid-3 reveal">
+      <div class="card">
+        <span class="k">Associazione</span>
+        <h3>American Statistical Association</h3>
+        <p>Membro dell'ASA.</p>
+      </div>
+      <div class="card">
+        <span class="k">Associazione</span>
+        <h3>S.I.L.F.S.</h3>
+        <p>Società Italiana di Logica e Filosofia delle Scienze.</p>
+      </div>
+      <div class="card">
+        <span class="k">Collaborazione</span>
+        <h3>University of Brighton — Seake Centre</h3>
+        <p>Faculty of Information Technology. Ricerca sui rapporti tra conoscenza e intelligenza artificiale.</p>
+      </div>
+      <div class="card">
+        <span class="k">Collaborazione</span>
+        <h3>Università di Bologna — CERDSI</h3>
+        <p>Centro di Ricerca e Documentazione su Sociologia e Informatica.</p>
+      </div>
+      <div class="card">
+        <span class="k">Gruppo di ricerca</span>
+        <h3>UniGe · Urbino · Calabria</h3>
+        <p>Gruppo di ricerca congiunto sui temi della cultura informatica in Italia.</p>
+      </div>
+      <div class="card">
+        <span class="k">Seminari</span>
+        <h3>I.R.S.T. Trento</h3>
+        <p>Seminari sui problemi metodologici dell'Intelligenza Artificiale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISORSE -->
+<section id="risorse">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Risorse</div>
+      <h2>Documenti e canali di contatto.</h2>
+    </div>
+
+    <div class="grid grid-3 reveal">
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>Curriculum Vitae — Italiano</h3>
+        <p>CV Europass completo (18 pagine) — versione italiana aggiornata al 6 ottobre 2025.</p>
+        <a class="link" href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_it.pdf" target="_blank" rel="noopener">Apri il PDF</a>
+      </article>
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>Curriculum Vitae — English</h3>
+        <p>Europass CV (18 pages) — English version, updated October 2025.</p>
+        <a class="link" href="https://rubrica.unige.it/static/cv/U0tGXlxp_cv_en.pdf" target="_blank" rel="noopener">Open the PDF</a>
+      </article>
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>Aula virtuale</h3>
+        <p>Sala BigBlueButton per lezioni e ricevimento online. Consigliato ricaricare la pagina all'ingresso.</p>
+        <a class="link" href="https://demo.bigbluebutton.org/gl/gio-rea-v9e" target="_blank" rel="noopener">Entra nell'aula</a>
+      </article>
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10A15.3 15.3 0 0 1 8 12 15.3 15.3 0 0 1 12 2z"/></svg>
+        </div>
+        <h3>Scheda UniGe</h3>
+        <p>Profilo ufficiale nella rubrica dell'Ateneo con contatti, ruoli e incarichi aggiornati.</p>
+        <a class="link" href="https://rubrica.unige.it/personale/U0tGXlxp" target="_blank" rel="noopener">Vai alla scheda</a>
+      </article>
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Offerta formativa UniGe</h3>
+        <p>Portale dei corsi dell'Ateneo con piani di studio e programmi.</p>
+        <a class="link" href="https://corsi.unige.it/" target="_blank" rel="noopener">Apri il portale</a>
+      </article>
+      <article class="res">
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Ricevimento studenti</h3>
+        <p>Su appuntamento, previo contatto diretto o via email.</p>
+        <a class="link" href="mailto:giorgio.sacchi@unige.it">Richiedi appuntamento</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div>
+        <div class="eyebrow" style="color:#a8c4e0">Contatti</div>
+        <h2>Mettiamoci in contatto.</h2>
+        <p>Per richieste didattiche, appuntamenti o collaborazioni, la via più rapida è l'email istituzionale. Rispondo appena possibile.</p>
+        <a class="btn btn-primary" style="background:#fff;color:var(--ink)" href="mailto:giorgio.sacchi@unige.it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          giorgio.sacchi@unige.it
+        </a>
+      </div>
+      <div>
+        <div class="info">
+          <div class="row"><span class="label">Email</span><span><a href="mailto:giorgio.sacchi@unige.it">giorgio.sacchi@unige.it</a></span></div>
+          <div class="row"><span class="label">Ruolo</span><span>Professore a contratto</span></div>
+          <div class="row"><span class="label">Ateneo</span><span>Università degli Studi di Genova · dal 1996</span></div>
+          <div class="row"><span class="label">Ricevimento</span><span>Su appuntamento, previo contatto diretto o email.</span></div>
+          <div class="row"><span class="label">Profilo</span><span><a href="https://rubrica.unige.it/personale/U0tGXlxp" target="_blank" rel="noopener">Rubrica UniGe ↗</a></span></div>
+          <div class="row"><span class="label">Lingue</span><span>Italiano · Inglese · Francese</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container inner">
+    <div>© <span id="year"></span> Giorgio Sacchi · Professore a contratto · Università degli Studi di Genova</div>
+    <div><a href="#top">Torna su ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const nav = document.getElementById('nav');
+  const onScroll = () => { if (window.scrollY > 8) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); };
+  document.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
